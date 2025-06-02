@@ -1,0 +1,24 @@
+from sympy import * # todo de sympy
+from numpy import *
+#Simbolos
+y0,y1,y2,y3=symbols('y1,y2,y3,y4')
+
+#Funciones multivariables coordenadas
+def f1(y1,y2,y3):  return y0-2*y1+y2+9.8*sin(y1)*0.25
+def f2(y1,y2,y3):  return y1-2*y2+y3+9.8*sin(y2)*0.25
+def f3(y1,y2,y3):  return y2-2*y3+y4+9.81*sin(y3)*0.25
+
+def f(x): return [f1(x),f2(x),f3(x) ]
+
+eq1 = Eq(y0-2*y1+y2+9.8*sin(y1)*0.25, 0)
+eq2 = Eq(y1-2*y2+y3+9.8*sin(y2)*0.25, 0)
+eq3 = Eq(y2-2*y3+y4+9.81*sin(y3)*0.25, 0)
+
+eq1
+
+solv = nsolve([eq1, eq2, eq3], [y1,y2,y3],[0.5,1,1.5],prec=20)
+print(solv)
+
+print(f1(solv[0],solv[1],solv[2],solv[3]))
+print(f2(solv[0],solv[1],solv[2],solv[3]))
+print(f3(solv[0],solv[1],solv[2],solv[3]))
